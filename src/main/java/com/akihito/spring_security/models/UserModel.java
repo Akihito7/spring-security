@@ -37,10 +37,27 @@ public class UserModel implements UserDetails, Serializable {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String getUsername() {
         return username;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setRoles(String roles) {
+        if (roles.equals(UserRolesEnum.Admin.toString())) {
+            this.roles = UserRolesEnum.Admin;
+        } else {
+            this.roles = UserRolesEnum.User;
+        }
+    }
+
 
     @Override
     public boolean isAccountNonExpired() {
